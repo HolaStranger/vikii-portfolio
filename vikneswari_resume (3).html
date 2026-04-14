@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vikneswari N.A.N Nandakumar – Resume</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:    #1a1a2e;
+  --gold:    #c8a96e;
+  --side-bg: #f4f3f0;
+  --border:  #ddd9d3;
+  --muted:   #777;
+  --body:    #2e2e2e;
+  --white:   #fff;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #e8e6e1;
+  color: var(--body);
+  line-height: 1.5;
+}
+
+/* ── Toolbar ── */
+#toolbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 99;
+  background: var(--navy);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 9px 24px;
+  box-shadow: 0 2px 10px rgba(0,0,0,.35);
+}
+#toolbar .t-title {
+  font-family: 'DM Serif Display', serif;
+  color: #fff; font-size: 14px; letter-spacing: .4px;
+}
+#toolbar .t-actions { display: flex; gap: 8px; align-items: center; }
+.tbtn {
+  padding: 6px 16px; border-radius: 5px; font-size: 12px;
+  font-family: 'DM Sans', sans-serif; font-weight: 500;
+  cursor: pointer; border: 1px solid rgba(255,255,255,.22);
+  display: inline-flex; align-items: center; gap: 5px; line-height: 1;
+  transition: background .15s;
+}
+.tbtn-ghost { background: transparent; color: #fff; }
+.tbtn-ghost:hover { background: rgba(255,255,255,.1); }
+.tbtn-gold  { background: var(--gold); color: var(--navy); border-color: var(--gold); }
+.tbtn-gold:hover { background: #d4b87e; }
+
+.edit-tip {
+  display: none; position: fixed; bottom: 18px; right: 18px; z-index: 99;
+  background: var(--gold); color: var(--navy);
+  padding: 7px 14px; border-radius: 20px;
+  font-size: 12px; font-weight: 600;
+  box-shadow: 0 4px 14px rgba(0,0,0,.2);
+}
+body.editing .edit-tip { display: block; }
+
+/* ── Page wrapper ── */
+#page-wrap {
+  margin-top: 50px;
+  display: flex; justify-content: center;
+  padding: 28px 12px 56px;
+}
+
+/* ── A4 sheet ── */
+#resume {
+  width: 210mm;
+  min-height: 297mm;
+  background: var(--white);
+  box-shadow: 0 6px 40px rgba(0,0,0,.18);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ══ HEADER ══ */
+.rh {
+  background: var(--navy);
+  padding: 30px 38px 24px;
+  color: #fff;
+}
+.rh-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 32px; letter-spacing: .6px; line-height: 1.1;
+  color: #fff;
+}
+.rh-sub {
+  color: var(--gold); font-size: 11px; font-weight: 500;
+  letter-spacing: 2.2px; text-transform: uppercase;
+  margin: 5px 0 16px;
+}
+.rh-contacts {
+  display: flex; flex-wrap: wrap; gap: 5px 18px;
+  font-size: 11.5px; color: rgba(255,255,255,.75);
+}
+.rh-contacts span { display: flex; align-items: center; gap: 4px; }
+
+/* ══ BODY ══ */
+.rb {
+  display: grid;
+  grid-template-columns: 1fr 195px;
+  flex: 1;
+}
+
+.mc {
+  padding: 22px 26px 22px 38px;
+  border-right: 1px solid var(--border);
+}
+
+.sc {
+  background: var(--side-bg);
+  padding: 22px 20px 22px 18px;
+}
+
+/* ══ SECTION ══ */
+.sec { margin-bottom: 17px; }
+.sec:last-child { margin-bottom: 0; }
+
+.sec-title {
+  font-size: 9.5px; font-weight: 700;
+  letter-spacing: 2.5px; text-transform: uppercase;
+  color: var(--gold);
+  border-bottom: 1.5px solid var(--gold);
+  padding-bottom: 5px; margin-bottom: 10px;
+}
+
+/* ══ PROFILE ══ */
+.profile-text { font-size: 12px; color: #3a3a3a; line-height: 1.7; }
+
+/* ══ EXP ══ */
+.exp { margin-bottom: 14px; }
+.exp:last-child { margin-bottom: 0; }
+.exp-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 6px; }
+.exp-co   { font-weight: 700; font-size: 13px; color: var(--navy); }
+.exp-loc  { font-size: 11px; color: var(--muted); }
+.exp-role { font-size: 12px; font-weight: 500; color: #3a3a3a; }
+.exp-date { font-size: 11px; color: var(--gold); font-weight: 600; white-space: nowrap; text-align: right; }
+.exp ul   { padding-left: 14px; margin-top: 5px; }
+.exp ul li { font-size: 11.5px; color: #3a3a3a; margin-bottom: 3px; line-height: 1.55; }
+
+/* ══ PROJECTS ══ */
+.proj { margin-bottom: 11px; padding-bottom: 11px; border-bottom: 1px solid var(--border); }
+.proj:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.proj-name  { font-weight: 700; font-size: 12.5px; color: var(--navy); margin-bottom: 2px; }
+.proj-stack { font-size: 10.5px; color: var(--gold); font-weight: 600; margin-bottom: 4px; }
+.proj ul    { padding-left: 14px; }
+.proj ul li { font-size: 11.5px; color: #3a3a3a; margin-bottom: 2px; line-height: 1.5; }
+
+/* ══ EDUCATION ══ */
+.edu { margin-bottom: 12px; }
+.edu:last-child { margin-bottom: 0; }
+.edu-school { font-weight: 700; font-size: 12px; color: var(--navy); line-height: 1.35; }
+.edu-deg    { font-size: 11.5px; color: #3a3a3a; margin-top: 2px; line-height: 1.4; }
+.edu-date   { font-size: 11px; color: var(--muted); margin-top: 2px; }
+.edu-note   { font-size: 11px; color: #555; margin-top: 3px; line-height: 1.5; }
+
+/* ══ SKILLS ══ */
+.sec .tags { display: flex; flex-wrap: wrap; gap: 4px; }
+.tag {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 3px; padding: 2px 7px;
+  font-size: 11px; color: #3a3a3a;
+}
+
+/* ══ ACHIEVEMENTS ══ */
+.ach-list { list-style: none; padding: 0; }
+.ach-list li {
+  font-size: 11px; color: #3a3a3a;
+  padding: 4px 0; border-bottom: 1px solid var(--border);
+  line-height: 1.45;
+}
+.ach-list li:last-child { border-bottom: none; }
+.ach-yr { display: block; font-size: 10px; color: var(--gold); font-weight: 700; }
+
+/* ══ LEADERSHIP ══ */
+.lead-list { list-style: none; padding: 0; }
+.lead-list li { font-size: 11px; color: #3a3a3a; padding: 3px 0; line-height: 1.45; }
+.lead-role { font-weight: 700; }
+
+/* ══ REFERENCE ══ */
+.ref-name  { font-weight: 700; font-size: 12px; color: var(--navy); }
+.ref-title { font-size: 11px; color: #3a3a3a; margin-top: 3px; }
+.ref-email { font-size: 11px; color: var(--gold); margin-top: 3px; }
+
+/* ══ EDIT ══ */
+[contenteditable] { outline: none; }
+[contenteditable="true"]:hover { background: rgba(200,169,110,.08); border-radius: 2px; }
+[contenteditable="true"]:focus { background: rgba(200,169,110,.14); border-radius: 2px; box-shadow: 0 0 0 1.5px var(--gold); }
+
+/* ══ PRINT ══ */
+@media print {
+  @page { size: A4 portrait; margin: 0; }
+  html, body { background: #fff !important; }
+  #toolbar, .edit-tip { display: none !important; }
+  #page-wrap { margin: 0; padding: 0; background: none; }
+  #resume { width: 210mm; min-height: 297mm; box-shadow: none; }
+  .rh, .sc, .tag { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+
+<div id="toolbar">
+  <span class="t-title">✦ Resume Editor</span>
+  <div class="t-actions">
+    <button class="tbtn tbtn-ghost" id="editBtn" onclick="toggleEdit()">✎ Edit</button>
+    <button class="tbtn tbtn-gold" onclick="savePDF()">⬇ Download PDF</button>
+  </div>
+</div>
+<div class="edit-tip">✎ Click any text to edit &nbsp;|&nbsp; Click "Done" when finished</div>
+
+<div id="page-wrap">
+<div id="resume">
+
+  <!-- HEADER -->
+  <div class="rh">
+    <div class="rh-name" contenteditable="false">VIKNESWARI N.A.N NANDAKUMAR</div>
+    <div class="rh-sub"  contenteditable="false">Software Engineer · Full Stack · AI &amp; Automation</div>
+    <div class="rh-contacts">
+      <span>✉ <span contenteditable="false">vikneswari4527773@gmail.com</span></span>
+      <span>☏ <span contenteditable="false">+6017-4805317</span></span>
+      <span>⌖ <span contenteditable="false">Kuala Lumpur, Malaysia</span></span>
+      <span>↗ <span contenteditable="false">linkedin.com/in/vikneswari176</span></span>
+      <span>↗ <span contenteditable="false">vikneswari.weebly.com</span></span>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="rb">
+
+    <!-- MAIN COLUMN -->
+    <div class="mc">
+
+      <div class="sec">
+        <div class="sec-title">Profile</div>
+        <p class="profile-text" contenteditable="false">Recent Software Engineering student with strong academic performance and hands-on experience in web development, automation, and artificial intelligence. Skilled in developing full-stack web applications using modern technologies, including JavaScript, React, PHP, and SQL. Passionate about building efficient digital solutions and applying AI and automation technologies to solve real-world problems.</p>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">Professional Experience</div>
+
+        <div class="exp">
+          <div class="exp-top">
+            <div>
+              <div class="exp-co"   contenteditable="false">TP Malaysia</div>
+              <div class="exp-role" contenteditable="false">Automation Intern</div>
+            </div>
+            <div>
+              <div class="exp-date" contenteditable="false">Mar 2025 – Sep 2025</div>
+              <div class="exp-loc"  contenteditable="false">Penang</div>
+            </div>
+          </div>
+          <ul contenteditable="false">
+            <li>Supported the design and implementation of automation workflows for enterprise business processes, improving operational efficiency and reducing repetitive manual work.</li>
+            <li>Assisted in requirement gathering, troubleshooting, testing, and workflow validation to ensure automation reliability and performance.</li>
+            <li>Worked with Power Automate, Power Apps, SharePoint, and Yellow.ai to build and document process automation solutions.</li>
+            <li>Contributed to API integration and enterprise system connectivity for automation use cases.</li>
+            <li>Collaborated with developers and stakeholders to align technical solutions with business requirements.</li>
+          </ul>
+        </div>
+
+        <div class="exp">
+          <div class="exp-top">
+            <div>
+              <div class="exp-co"   contenteditable="false">KG Information Systems Sdn Bhd</div>
+              <div class="exp-role" contenteditable="false">RPA Intern</div>
+            </div>
+            <div>
+              <div class="exp-date" contenteditable="false">Jun 2023 – Jul 2023</div>
+              <div class="exp-loc"  contenteditable="false">Penang</div>
+            </div>
+          </div>
+          <ul contenteditable="false">
+            <li>Designed and developed RPA workflows to automate repetitive business tasks and improve process efficiency.</li>
+            <li>Participated in testing and support of automation solutions based on business requirements.</li>
+            <li>Collaborated with IT and business teams to ensure smooth implementation and maintenance of automated processes.</li>
+            <li>Strengthened practical skills in process analysis, automation logic, and workflow optimization.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">Projects</div>
+
+        <div class="proj">
+          <div class="proj-name"  contenteditable="false">StopBully360 – AI-Driven Incident Reporting &amp; Management System</div>
+          <div class="proj-stack" contenteditable="false">React · TypeScript · Firebase · Google Gemini AI · Tailwind CSS · Recharts · jsPDF · ExcelJS</div>
+          <ul contenteditable="false">
+            <li>Developed a full-stack web platform to streamline bullying incident reporting, case management, and administrative workflows in educational institutions.</li>
+            <li>Integrated Google Gemini AI to automate incident classification, severity analysis, and hotspot detection, reducing manual triage effort by ~60%.</li>
+            <li>Designed a 5-tier RBAC system for secure, role-based access and confidentiality across multiple administrative roles.</li>
+            <li>Built real-time system with React and Firebase Firestore for notifications, appointments, and live case status updates.</li>
+            <li>Developed analytics dashboards and automated reporting using Recharts, jsPDF, and ExcelJS.</li>
+          </ul>
+        </div>
+
+        <div class="proj">
+          <div class="proj-name"  contenteditable="false">AuraBeat – Personalized Music Streaming Web Application</div>
+          <div class="proj-stack" contenteditable="false">React · Tailwind CSS · Zustand · React Router · JioSaavn API</div>
+          <ul contenteditable="false">
+            <li>Developed a responsive music streaming app for discovering, searching, and managing music in a seamless interface.</li>
+            <li>Integrated the JioSaavn API for real-time data including songs, artists, albums, and playlists.</li>
+            <li>Implemented global state management with Zustand for playback control, queue, history, and liked songs.</li>
+            <li>Built real-time search with multi-language support and a glassmorphism-inspired UI.</li>
+          </ul>
+        </div>
+
+        <div class="proj">
+          <div class="proj-name" contenteditable="false">EduCare Portal – Parent Teacher Communication Platform</div>
+          <ul contenteditable="false">
+            <li>Designed a platform for student activity registration, appointment scheduling, and real-time monitoring.</li>
+            <li>Improved communication between parents, teachers, and administrators.</li>
+            <li>Replaced manual processes with an efficient web-based system aligned with the Malaysia Education Blueprint.</li>
+          </ul>
+        </div>
+
+        <div class="proj">
+          <div class="proj-name"  contenteditable="false">Clinic Management System</div>
+          <div class="proj-stack" contenteditable="false">PHP · JavaScript · HTML · CSS · Java</div>
+          <ul contenteditable="false">
+            <li>Developed a system allowing patients to book appointments and manage medical records.</li>
+            <li>Doctors can manage patient health records and schedule sessions.</li>
+            <li>Admin can manage doctors, patients, and appointment data.</li>
+          </ul>
+        </div>
+
+        <div class="proj">
+          <div class="proj-name"  contenteditable="false">Student Monitoring System</div>
+          <div class="proj-stack" contenteditable="false">Laravel · JavaScript · HTML · CSS</div>
+          <ul contenteditable="false">
+            <li>Developed a system where lecturers submit academic complaints and advisors monitor student performance.</li>
+            <li>Advisors can generate meeting reports and visualize student progress.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- SIDE COLUMN -->
+    <div class="sc">
+
+      <div class="sec">
+        <div class="sec-title">Education</div>
+
+        <div class="edu">
+          <div class="edu-school" contenteditable="false">Universiti Sains Malaysia</div>
+          <div class="edu-deg"    contenteditable="false">B.Sc. Software Engineering (Hons)</div>
+          <div class="edu-date"   contenteditable="false">2023 – Present · Penang</div>
+          <div class="edu-note"   contenteditable="false">CGPA: 3.47 / 4.0<br>Dean's List – Semesters 3 &amp; 5</div>
+        </div>
+
+        <div class="edu">
+          <div class="edu-school" contenteditable="false">Sultan Idris Education University</div>
+          <div class="edu-deg"    contenteditable="false">Diploma in Computer Science (Internet Computing)</div>
+          <div class="edu-date"   contenteditable="false">2021 – 2023 · Perak</div>
+          <div class="edu-note"   contenteditable="false">CGPA: 3.89 / 4.0<br>Dean's List – All Semesters<br>MUET Band 4</div>
+        </div>
+
+        <div class="edu">
+          <div class="edu-school" contenteditable="false">SMK Dato' Bijaya Setia</div>
+          <div class="edu-deg"    contenteditable="false">SPM – Malaysia Certificate of Education</div>
+          <div class="edu-date"   contenteditable="false">2016 – 2020 · Kedah</div>
+          <div class="edu-note"   contenteditable="false">Result: 10A</div>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">Programming</div>
+        <div class="tags" contenteditable="false">
+          <span class="tag">React</span><span class="tag">Node.js</span><span class="tag">JavaScript</span><span class="tag">TypeScript</span><span class="tag">PHP</span><span class="tag">Python</span><span class="tag">Java</span><span class="tag">SQL</span><span class="tag">HTML/CSS</span><span class="tag">Laravel</span><span class="tag">VB.NET</span>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">Tools &amp; Platforms</div>
+        <div class="tags" contenteditable="false">
+          <span class="tag">N8N</span><span class="tag">Power Automate</span><span class="tag">Foundry</span><span class="tag">Azure</span><span class="tag">Yellow AI</span><span class="tag">Power Apps</span><span class="tag">SharePoint</span><span class="tag">Power BI</span><span class="tag">Firebase</span><span class="tag">MS Office</span>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">Technical Areas</div>
+        <div class="tags" contenteditable="false">
+          <span class="tag">AI &amp; ML</span><span class="tag">Full Stack Dev</span><span class="tag">RPA</span><span class="tag">Automation</span>
+        </div>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">Achievements &amp; Certifications</div>
+        <ul class="ach-list" contenteditable="false">
+          <li><span class="ach-yr">2025</span>ML with Python – Manufacturing &amp; Supply Chain</li>
+          <li><span class="ach-yr">2024</span>Microsoft Certified: Azure AI Fundamentals</li>
+          <li><span class="ach-yr">2024</span>React JS Bootcamp – Novitech R&amp;D Limited</li>
+          <li><span class="ach-yr">2024</span>AI Internship – Novitech R&amp;D Limited (1 month)</li>
+          <li><span class="ach-yr">2023</span>Power BI Data Analyst Associate – Microsoft</li>
+          <li><span class="ach-yr">2022–23</span>JS, SQL, Java, HTML, CSS – Programming Hub</li>
+          <li><span class="ach-yr">2020</span>Gold Award – National Mobile App Contest</li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">Leadership &amp; Activities</div>
+        <ul class="lead-list" contenteditable="false">
+          <li><span class="lead-role">Program Director</span> – Use Twice Save Globe, National Programme (UPSI, 2022)</li>
+          <li><span class="lead-role">Vice Treasurer</span> – First Foot Forward, International Programme (UPSI, 2022)</li>
+          <li><span class="lead-role">REXCO</span> – Bureau Entrepreneurship &amp; Sponsorship, Bharatanatyam Cultural Club</li>
+          <li><span class="lead-role">Secretariat</span> – CONVEX 2023, USM</li>
+          <li>Committee Member – Multiple national programmes &amp; university events</li>
+        </ul>
+      </div>
+
+      <div class="sec">
+        <div class="sec-title">Reference</div>
+        <div class="ref-name"  contenteditable="false">Dr Nor Athiyah Binti Abdullah</div>
+        <div class="ref-title" contenteditable="false">Lecturer &amp; FYP Supervisor · USM</div>
+        <div class="ref-email" contenteditable="false">athiyah@usm.my</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+let editing = false;
+
+function toggleEdit() {
+  editing = !editing;
+  document.querySelectorAll('[contenteditable]').forEach(el =>
+    el.setAttribute('contenteditable', editing ? 'true' : 'false')
+  );
+  document.getElementById('editBtn').textContent = editing ? '✓ Done' : '✎ Edit';
+  document.body.classList.toggle('editing', editing);
+}
+
+function savePDF() {
+  if (editing) toggleEdit();
+  setTimeout(() => window.print(), 120);
+}
+</script>
+</body>
+</html>
