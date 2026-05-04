@@ -1,0 +1,2133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vikneswari Nandakumar — AI Automation Engineer</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    :root {
+      --ink: #05080f;
+      --deep: #080d1a;
+      --panel: #0c1222;
+      --glass: #111827;
+      --edge: #1c2840;
+      --line: #1e2d4a;
+      --teal: #00d4b4;
+      --amber: #f5a623;
+      --ice: #a8c4e0;
+      --ghost: #3d5270;
+      --white: #eef2f8;
+      --mid: #7a8fa8;
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      background: var(--ink);
+      color: var(--white);
+      font-family: 'Outfit', sans-serif;
+      font-weight: 400;
+      line-height: 1.65;
+      overflow-x: hidden;
+      cursor: none
+    }
+
+    /* CURSOR */
+    #cd {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: var(--teal);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 12px var(--teal);
+      transition: width .2s, height .2s, background .3s, box-shadow .3s;
+      opacity: 0;
+      left: -100px;
+      top: -100px
+    }
+
+    #cr {
+      position: fixed;
+      width: 36px;
+      height: 36px;
+      border: 1.5px solid rgba(0, 212, 180, .5);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: width .25s, height .25s, border-color .25s, opacity .4s;
+      opacity: 0;
+      left: -100px;
+      top: -100px
+    }
+
+    .hov #cd {
+      width: 16px;
+      height: 16px;
+      background: var(--amber);
+      box-shadow: 0 0 18px var(--amber)
+    }
+
+    .hov #cr {
+      width: 52px;
+      height: 52px;
+      border-color: rgba(245, 166, 35, .6)
+    }
+
+    /* BACKGROUND */
+    .gbg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(0, 212, 180, .022) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 212, 180, .022) 1px, transparent 1px);
+      background-size: 60px 60px
+    }
+
+    #sf {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: .45
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 500;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 3rem;
+      border-bottom: 1px solid rgba(28, 40, 64, .8);
+      background: rgba(5, 8, 15, .88);
+      backdrop-filter: blur(24px)
+    }
+
+    .nlogo {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .78rem;
+      color: var(--teal);
+      letter-spacing: .15em;
+      display: flex;
+      align-items: center;
+      gap: .6rem
+    }
+
+    .nbar {
+      width: 20px;
+      height: 2px;
+      background: var(--teal)
+    }
+
+    .nlinks {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none
+    }
+
+    .nlinks a {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .7rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--ghost);
+      text-decoration: none;
+      transition: color .2s
+    }
+
+    .nlinks a:hover,
+    .nlinks a.active {
+      color: var(--teal)
+    }
+
+    .nstatus {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .68rem;
+      color: var(--ghost)
+    }
+
+    .nled {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 8px var(--teal);
+      animation: pulse 2s ease infinite
+    }
+
+    /* HERO */
+    #hero {
+      position: relative;
+      min-height: 100vh;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 3rem 4rem;
+      gap: 3rem
+    }
+
+    .heyebrow {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: su .8s ease .2s forwards
+    }
+
+    .heyebrow::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--teal)
+    }
+
+    .hname {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.8rem, 6vw, 5.8rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      color: var(--white);
+      opacity: 0;
+      animation: su .9s ease .35s forwards
+    }
+
+    .hn-pre {
+      font-size: .42em;
+      font-weight: 300;
+      color: var(--teal);
+      letter-spacing: .05em;
+      vertical-align: middle;
+      margin-right: .2em
+    }
+
+    .hn-last {
+      display: block;
+      font-size: .48em;
+      font-weight: 300;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-top: .18em
+    }
+
+    .htl {
+      margin: 1.8rem 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      opacity: 0;
+      animation: su .9s ease .5s forwards
+    }
+
+    .htl span {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .78rem;
+      color: var(--amber);
+      letter-spacing: .1em;
+      text-transform: uppercase
+    }
+
+    .tdiv {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--amber), transparent)
+    }
+
+    .hdesc {
+      font-size: 1.05rem;
+      color: var(--mid);
+      font-weight: 300;
+      max-width: 480px;
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      animation: su .9s ease .65s forwards
+    }
+
+    .hdesc strong {
+      color: var(--white);
+      font-weight: 500
+    }
+
+    .hact {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      opacity: 0;
+      animation: su .9s ease .8s forwards
+    }
+
+    .bteal {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .78rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .8rem 2rem;
+      border-radius: 3px;
+      background: var(--teal);
+      color: var(--ink);
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .25s;
+      display: inline-block
+    }
+
+    .bteal:hover {
+      background: #00f0cc;
+      box-shadow: 0 0 30px rgba(0, 212, 180, .5);
+      transform: translateY(-2px)
+    }
+
+    .bout {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .78rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .78rem 1.8rem;
+      border-radius: 3px;
+      background: transparent;
+      color: var(--ice);
+      border: 1px solid var(--edge);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .25s;
+      display: inline-block
+    }
+
+    .bout:hover {
+      border-color: var(--teal);
+      color: var(--teal)
+    }
+
+    .hr {
+      opacity: 0;
+      animation: fi 1.2s ease .9s forwards;
+      display: flex;
+      align-items: center;
+      justify-content: center
+    }
+
+    .term {
+      background: var(--panel);
+      border: 1px solid var(--edge);
+      border-radius: 8px;
+      width: 100%;
+      max-width: 460px;
+      box-shadow: 0 40px 80px rgba(0, 0, 0, .5), 0 0 0 1px var(--line);
+      overflow: hidden
+    }
+
+    .tbar {
+      background: var(--glass);
+      padding: .7rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .tdot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%
+    }
+
+    .ttitle {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .68rem;
+      color: var(--ghost);
+      margin-left: .5rem
+    }
+
+    .tbody {
+      padding: 1.5rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .78rem;
+      line-height: 1.9
+    }
+
+    .tl {
+      display: flex;
+      gap: .6rem
+    }
+
+    .tp {
+      color: var(--teal)
+    }
+
+    .tc {
+      color: var(--white)
+    }
+
+    .to {
+      color: var(--mid);
+      padding-left: 1rem
+    }
+
+    .tk {
+      color: var(--amber)
+    }
+
+    .tv {
+      color: var(--teal)
+    }
+
+    .tb2 {
+      height: .5rem
+    }
+
+    .blk {
+      animation: blk 1s step-end infinite
+    }
+
+    .hstats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border-top: 1px solid var(--line)
+    }
+
+    .hs {
+      background: var(--panel);
+      padding: 1rem;
+      text-align: center
+    }
+
+    .hsn {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      color: var(--teal);
+      line-height: 1
+    }
+
+    .hsl {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .6rem;
+      color: var(--ghost);
+      letter-spacing: .1em;
+      margin-top: .3rem;
+      text-transform: uppercase
+    }
+
+    /* SHARED */
+    .w {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 6rem 2.5rem;
+      position: relative;
+      z-index: 2
+    }
+
+    .sh {
+      margin-bottom: 3.5rem
+    }
+
+    .stag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .68rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      margin-bottom: .8rem
+    }
+
+    .stag::after {
+      content: '';
+      flex: 0 0 30px;
+      height: 1px;
+      background: var(--teal)
+    }
+
+    .snum {
+      color: var(--ghost)
+    }
+
+    .sh2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      letter-spacing: .04em;
+      line-height: 1
+    }
+
+    /* ABOUT */
+    #about {
+      background: var(--deep)
+    }
+
+    .agrid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 5rem;
+      align-items: start
+    }
+
+    .abp {
+      color: var(--mid);
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.9;
+      margin-bottom: 1.2rem
+    }
+
+    .abp strong {
+      color: var(--white);
+      font-weight: 500
+    }
+
+    .aedu {
+      margin-top: 2.5rem
+    }
+
+    .eitem {
+      border-left: 2px solid var(--line);
+      padding: 0 0 1.5rem 1.5rem;
+      position: relative
+    }
+
+    .eitem:last-child {
+      padding-bottom: 0
+    }
+
+    .eitem::before {
+      content: '';
+      position: absolute;
+      left: -5px;
+      top: 6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ink);
+      border: 2px solid var(--teal)
+    }
+
+    .eperiod {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .66rem;
+      color: var(--teal);
+      letter-spacing: .1em;
+      margin-bottom: .3rem
+    }
+
+    .edeg {
+      font-size: .95rem;
+      font-weight: 600;
+      color: var(--white)
+    }
+
+    .eschool {
+      font-size: .85rem;
+      color: var(--mid);
+      margin-top: .1rem
+    }
+
+    .ecgpa {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      margin-top: .4rem;
+      padding: .2rem .7rem;
+      background: rgba(0, 212, 180, .07);
+      border: 1px solid rgba(0, 212, 180, .2);
+      border-radius: 3px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .68rem;
+      color: var(--teal)
+    }
+
+    .ar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem
+    }
+
+    .ib {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 1.6rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .3s, transform .3s
+    }
+
+    .ib:hover {
+      border-color: rgba(0, 212, 180, .4);
+      transform: translateX(4px)
+    }
+
+    .ib::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--teal);
+      opacity: 0;
+      transition: opacity .3s
+    }
+
+    .ib:hover::before {
+      opacity: 1
+    }
+
+    .ibl {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .63rem;
+      color: var(--ghost);
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: .8rem
+    }
+
+    .ibc {
+      font-size: .92rem;
+      color: var(--ice);
+      line-height: 1.7
+    }
+
+    /* SKILLS */
+    #skills {
+      background: var(--ink)
+    }
+
+    .sklayout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 2rem;
+      align-items: start
+    }
+
+    .sknav {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem
+    }
+
+    .sktab {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .8rem 1.2rem;
+      border-radius: 4px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      color: var(--ghost);
+      cursor: pointer;
+      text-align: left;
+      transition: all .25s;
+      display: flex;
+      align-items: center;
+      gap: .6rem
+    }
+
+    .sktab:hover {
+      color: var(--ice);
+      border-color: var(--edge)
+    }
+
+    .sktab.on {
+      background: rgba(0, 212, 180, .08);
+      border-color: rgba(0, 212, 180, .35);
+      color: var(--teal)
+    }
+
+    .sktn {
+      color: var(--ghost);
+      font-size: .6rem
+    }
+
+    .skpan {
+      display: none
+    }
+
+    .skpan.on {
+      display: block
+    }
+
+    .skptit {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: .08em;
+      color: var(--white);
+      margin-bottom: .5rem
+    }
+
+    .skpdesc {
+      font-size: .88rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      max-width: 500px
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem
+    }
+
+    .chip {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .06em;
+      padding: .35rem .85rem;
+      border-radius: 3px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      color: var(--ice);
+      transition: all .2s
+    }
+
+    .chip:hover {
+      border-color: rgba(0, 212, 180, .4);
+      color: var(--teal)
+    }
+
+    .chip.k {
+      border-color: rgba(0, 212, 180, .3);
+      color: var(--teal);
+      background: rgba(0, 212, 180, .06)
+    }
+
+    /* EXPERIENCE */
+    #experience {
+      background: var(--deep)
+    }
+
+    .expgrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem
+    }
+
+    .expcard {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .3s, transform .3s
+    }
+
+    .expcard::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--teal), transparent);
+      opacity: 0;
+      transition: opacity .3s
+    }
+
+    .expcard:hover {
+      border-color: rgba(0, 212, 180, .3);
+      transform: translateY(-4px)
+    }
+
+    .expcard:hover::before {
+      opacity: 1
+    }
+
+    .eperiod2 {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .68rem;
+      color: var(--teal);
+      letter-spacing: .1em;
+      margin-bottom: .6rem
+    }
+
+    .erole {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: .06em;
+      color: var(--white);
+      margin-bottom: .25rem
+    }
+
+    .eco {
+      font-size: .88rem;
+      color: var(--mid);
+      margin-bottom: 1.2rem;
+      font-style: italic
+    }
+
+    .epoints {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem
+    }
+
+    .epoints li {
+      font-size: .86rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.65;
+      padding-left: 1.2rem;
+      position: relative
+    }
+
+    .epoints li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-size: .65rem;
+      top: .3rem
+    }
+
+    /* PROJECTS */
+    #projects {
+      background: var(--ink)
+    }
+
+    .pfilt {
+      display: flex;
+      gap: .6rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem
+    }
+
+    .fb {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .68rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .5rem 1.2rem;
+      border-radius: 3px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      color: var(--ghost);
+      cursor: pointer;
+      transition: all .2s
+    }
+
+    .fb:hover {
+      color: var(--ice);
+      border-color: var(--edge)
+    }
+
+    .fb.on {
+      background: rgba(0, 212, 180, .08);
+      border-color: rgba(0, 212, 180, .35);
+      color: var(--teal)
+    }
+
+    .pgrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem
+    }
+
+    .pc {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: .8rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color .3s, transform .3s
+    }
+
+    .pc.ft {
+      grid-column: span 2
+    }
+
+    .pc:hover {
+      border-color: rgba(0, 212, 180, .35);
+      transform: translateY(-4px)
+    }
+
+    .pnum {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .62rem;
+      color: var(--ghost);
+      letter-spacing: .08em
+    }
+
+    .pico {
+      font-size: 1.5rem
+    }
+
+    .pname {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: .05em;
+      color: var(--white)
+    }
+
+    .pdesc {
+      font-size: .86rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.7;
+      flex: 1
+    }
+
+    .pstack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem
+    }
+
+    .stk {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .66rem;
+      padding: .2rem .6rem;
+      border-radius: 3px;
+      background: rgba(0, 212, 180, .06);
+      border: 1px solid rgba(0, 212, 180, .2);
+      color: var(--teal)
+    }
+
+    .parr {
+      position: absolute;
+      top: 1.4rem;
+      right: 1.4rem;
+      font-size: 1rem;
+      color: var(--ghost);
+      transition: all .3s
+    }
+
+    .pc:hover .parr {
+      color: var(--teal);
+      transform: rotate(45deg)
+    }
+
+    /* ACHIEVEMENTS */
+    #achievements {
+      background: var(--deep)
+    }
+
+    .achgrid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem
+    }
+
+    .achc {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 1.5rem;
+      transition: border-color .3s, transform .3s;
+      position: relative;
+      overflow: hidden
+    }
+
+    .achc::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--teal), transparent);
+      opacity: 0;
+      transition: opacity .3s
+    }
+
+    .achc:hover {
+      border-color: rgba(0, 212, 180, .3);
+      transform: translateY(-3px)
+    }
+
+    .achc:hover::after {
+      opacity: 1
+    }
+
+    .achi {
+      font-size: 1.6rem;
+      display: block;
+      margin-bottom: .7rem
+    }
+
+    .achn {
+      font-size: .88rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: .3rem;
+      line-height: 1.4
+    }
+
+    .achis {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .65rem;
+      color: var(--teal);
+      letter-spacing: .08em
+    }
+
+    /* LEADERSHIP */
+    #leadership {
+      background: var(--ink)
+    }
+
+    .llist {
+      display: flex;
+      flex-direction: column;
+      gap: .75rem
+    }
+
+    .litem {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      transition: all .25s
+    }
+
+    .litem:hover {
+      border-color: rgba(0, 212, 180, .3);
+      background: rgba(0, 212, 180, .03);
+      transform: translateX(4px)
+    }
+
+    .lic {
+      font-size: 1.2rem;
+      width: 32px;
+      flex-shrink: 0
+    }
+
+    .lti {
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: .15rem
+    }
+
+    .lor {
+      font-size: .82rem;
+      color: var(--mid);
+      font-weight: 300
+    }
+
+    /* CONTACT */
+    #contact {
+      background: var(--deep);
+      border-top: 1px solid var(--line)
+    }
+
+    .clayout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center
+    }
+
+    .bigt {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 7vw, 6rem);
+      line-height: .95;
+      letter-spacing: .03em;
+      margin-bottom: 1.5rem
+    }
+
+    .bigt span {
+      color: var(--teal)
+    }
+
+    .cleftp {
+      font-size: .95rem;
+      color: var(--mid);
+      font-weight: 300;
+      line-height: 1.8;
+      margin-bottom: 2rem
+    }
+
+    .cemail {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.4rem;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      margin-bottom: 1.5rem;
+      transition: border-color .3s
+    }
+
+    .cemail:hover {
+      border-color: rgba(0, 212, 180, .4)
+    }
+
+    .eaddr {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .82rem;
+      color: var(--teal);
+      flex: 1
+    }
+
+    .cpbtn {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .65rem;
+      letter-spacing: .1em;
+      padding: .3rem .8rem;
+      border-radius: 3px;
+      border: 1px solid var(--edge);
+      color: var(--ghost);
+      background: none;
+      cursor: pointer;
+      transition: all .2s;
+      text-transform: uppercase
+    }
+
+    .cpbtn:hover {
+      border-color: var(--teal);
+      color: var(--teal)
+    }
+
+    .clinks {
+      display: flex;
+      gap: .8rem
+    }
+
+    .clink {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .72rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .7rem 1.4rem;
+      border-radius: 4px;
+      border: 1px solid var(--edge);
+      color: var(--ice);
+      background: var(--panel);
+      text-decoration: none;
+      transition: all .25s
+    }
+
+    .clink:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+      background: rgba(0, 212, 180, .06);
+      transform: translateY(-2px)
+    }
+
+    .cright {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem
+    }
+
+    .ccard {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      transition: all .3s
+    }
+
+    .ccard:hover {
+      border-color: rgba(0, 212, 180, .3);
+      transform: translateX(4px)
+    }
+
+    .ccl {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .62rem;
+      color: var(--ghost);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: .2rem
+    }
+
+    .ccv {
+      font-size: .9rem;
+      color: var(--ice);
+      font-weight: 500
+    }
+
+    .avbadge {
+      display: inline-flex;
+      align-items: center;
+      gap: .6rem;
+      padding: .6rem 1.2rem;
+      border-radius: 4px;
+      background: rgba(0, 212, 180, .07);
+      border: 1px solid rgba(0, 212, 180, .25);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .7rem;
+      color: var(--teal);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem
+    }
+
+    .avdot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 0 8px var(--teal);
+      animation: pulse 2s ease infinite
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid var(--line);
+      padding: 1.5rem 3rem;
+      z-index: 2;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between
+    }
+
+    .fl,
+    .fr {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .68rem;
+      color: var(--ghost);
+      letter-spacing: .08em
+    }
+
+    .fr span {
+      color: var(--teal)
+    }
+
+    /* REVEAL */
+    .rev {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s ease
+    }
+
+    .rev.vis {
+      opacity: 1;
+      transform: none
+    }
+
+    .d1 {
+      transition-delay: .1s
+    }
+
+    .d2 {
+      transition-delay: .2s
+    }
+
+    .d3 {
+      transition-delay: .3s
+    }
+
+    .d4 {
+      transition-delay: .4s
+    }
+
+    .d5 {
+      transition-delay: .5s
+    }
+
+    /* KEYFRAMES */
+    @keyframes su {
+      from {
+        opacity: 0;
+        transform: translateY(30px)
+      }
+
+      to {
+        opacity: 1;
+        transform: none
+      }
+    }
+
+    @keyframes fi {
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    @keyframes blk {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 0 rgba(0, 212, 180, .4)
+      }
+
+      70% {
+        box-shadow: 0 0 0 8px transparent
+      }
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:960px) {
+      nav {
+        padding: 1rem 1.5rem
+      }
+
+      .nlinks {
+        display: none
+      }
+
+      #hero {
+        grid-template-columns: 1fr;
+        padding: 7rem 1.5rem 3rem
+      }
+
+      .agrid,
+      .expgrid,
+      .clayout,
+      .sklayout,
+      .pgrid {
+        grid-template-columns: 1fr;
+        gap: 2rem
+      }
+
+      .achgrid {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .pc.ft {
+        grid-column: span 1
+      }
+
+      .w {
+        padding: 4rem 1.5rem
+      }
+
+      footer {
+        flex-direction: column;
+        gap: .4rem;
+        text-align: center;
+        padding: 1.2rem
+      }
+    }
+
+    @media(max-width:600px) {
+      .achgrid {
+        grid-template-columns: 1fr
+      }
+
+      .hstats {
+        grid-template-columns: 1fr
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="cd"></div>
+  <div id="cr"></div>
+  <div class="gbg"></div>
+  <canvas id="sf"></canvas>
+
+  <nav id="navbar">
+    <div class="nlogo">
+      <div class="nbar"></div>VN.EXE
+    </div>
+    <ul class="nlinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#achievements">Awards</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nstatus">
+      <div class="nled"></div>Open to Work &middot; August 2026
+    </div>
+  </nav>
+
+  <section id="hero">
+    <div>
+      <div class="heyebrow">Final Year &middot; USM Penang &middot; AI Automation</div>
+      <h1 class="hname"><span class="hn-pre">I am</span>Vikneswari<span class="hn-last">Nandakumar</span></h1>
+      <div class="htl"><span>AI Automation &middot; RPA &middot; Full Stack</span>
+        <div class="tdiv"></div>
+      </div>
+      <p class="hdesc"><strong>Final-year Software Engineering student</strong> at USM with a CGPA of 3.47 and a place
+        on the Dean's List. Shipped <strong>10+ live automation bots</strong> at Teleperformance. I build systems that
+        actually run in production.</p>
+      <div class="hact">
+        <a href="#projects" class="bteal">View Work</a>
+        <a href="resume.pdf" class="bout" download>Download Resume (PDF)</a>
+        <a href="#contact" class="bout">Get In Touch</a>
+      </div>
+    </div>
+    <div class="hr">
+      <div style="width:100%;max-width:460px">
+        <div class="term">
+          <div class="tbar">
+            <div class="tdot" style="background:#ff5f56"></div>
+            <div class="tdot" style="background:#ffbd2e;margin-left:.3rem"></div>
+            <div class="tdot" style="background:#27c93f;margin-left:.3rem"></div>
+            <span class="ttitle">vikneswari@usm ~ portfolio.sh</span>
+          </div>
+          <div class="tbody">
+            <div class="tl"><span class="tp">$</span><span class="tc">&nbsp;cat profile.json</span></div>
+            <div class="tb2"></div>
+            <div class="tl"><span class="to"><span class="tk">"name"</span>: <span class="tv">"Vikneswari
+                  Nandakumar"</span>,</span></div>
+            <div class="tl"><span class="to"><span class="tk">"role"</span>: <span class="tv">"AI Automation
+                  Engineer"</span>,</span></div>
+            <div class="tl"><span class="to"><span class="tk">"university"</span>: <span class="tv">"USM
+                  Penang"</span>,</span></div>
+            <div class="tl"><span class="to"><span class="tk">"cgpa"</span>: <span class="tv">"3.47 /
+                  4.0"</span>,</span></div>
+            <div class="tl"><span class="to"><span class="tk">"status"</span>: <span class="tv">"Available August
+                  2026"</span>,</span></div>
+            <div class="tl"><span class="to"><span class="tk">"stack"</span>: [<span class="tv">"Power Automate"</span>,
+                <span class="tv">"UiPath"</span>, <span class="tv">"N8N"</span>],</span></div>
+            <div class="tl"><span class="to"><span class="tk">"bots_shipped"</span>: <span class="tv">10</span>,</span>
+            </div>
+            <div class="tl"><span class="to"><span class="tk">"deans_list"</span>: <span class="tv">"6x Scholar"</span></span>
+            </div>
+            <div class="tb2"></div>
+            <div class="tl"><span class="tp">$</span><span class="tc">&nbsp;<span class="blk">_</span></span></div>
+          </div>
+          <div class="hstats">
+            <div class="hs">
+              <div class="hsn">10+</div>
+              <div class="hsl">Bots Shipped</div>
+            </div>
+            <div class="hs">
+              <div class="hsn">3.89</div>
+              <div class="hsl">Max CGPA</div>
+            </div>
+            <div class="hs">
+              <div class="hsn">6x</div>
+              <div class="hsl">Dean's List</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="w">
+      <div class="sh rev">
+        <div class="stag"><span class="snum">01</span>&nbsp;About</div>
+        <h2 class="sh2">ENGINEERED<br>FOR IMPACT</h2>
+      </div>
+      <div class="agrid">
+        <div>
+          <p class="abp rev">I'm a <strong>final-year Software Engineering student at Universiti Sains
+              Malaysia</strong>, Penang, graduating with Honours. I earned my spot on the Dean's List in Semesters 3 and
+            5. Earlier, I achieved a <strong>3.89 CGPA at UPSI</strong> with Dean's List honors every semester.</p>
+          <p class="abp rev d1">My internship at <strong>TP Malaysia (Teleperformance)</strong> was the real classroom,
+            where I shipped 10+ automation bots used by business teams daily. These aren't prototypes; they are
+            <strong>live production systems.</strong></p>
+          <p class="abp rev d2">I bridge the gap between <strong>AI automation and full-stack engineering</strong>. I'm
+            comfortable designing Power Automate flows, building Yellow.ai chatbots, architecting React frontends, and
+            writing SQL-backed automation logic.</p>
+          <div class="aedu rev d3">
+            <div class="eitem">
+              <div class="eperiod">2023 &ndash; Present</div>
+              <div class="edeg">Bachelor of Software Engineering (Hons)</div>
+              <div class="eschool">Universiti Sains Malaysia, Penang</div>
+              <div class="ecgpa">&#x2B21; CGPA 3.47 &middot; Dean's List Sem 3 &amp; 5</div>
+            </div>
+            <div class="eitem">
+              <div class="eperiod">2021 &ndash; 2023</div>
+              <div class="edeg">Diploma in Computer Science (Internet Computing)</div>
+              <div class="eschool">Sultan Idris Education University (UPSI), Perak</div>
+              <div class="ecgpa">&#x2B21; CGPA 3.89 &middot; Dean's List for all semesters</div>
+            </div>
+            <div class="eitem">
+              <div class="eperiod">2016 &ndash; 2020</div>
+              <div class="edeg">Malaysia Certificate of Education (SPM)</div>
+              <div class="eschool">SMK Dato' Bijaya Setia, Kedah</div>
+              <div class="ecgpa">&#x2B21; 10A and MUET Band 4</div>
+            </div>
+          </div>
+        </div>
+        <div class="ar">
+          <div class="ib rev">
+            <div class="ibl">Seeking</div>
+            <div class="ibc">AI Automation Engineer &middot; RPA Developer &middot; Software Engineer<br>Open to <strong
+                style="color:var(--teal)">international &amp; remote roles</strong></div>
+          </div>
+          <div class="ib rev d1">
+            <div class="ibl">Core Strengths</div>
+            <div class="ibc">Enterprise RPA &middot; Chatbot design &middot; Full-stack web &middot; System thinking
+              &middot; Fast delivery</div>
+          </div>
+          <div class="ib rev d2">
+            <div class="ibl">Languages</div>
+            <div class="ibc">English (MUET Band 4) &middot; Tamil &middot; Malay</div>
+          </div>
+          <div class="ib rev d3">
+            <div class="ibl">&#x1F947; Gold Award</div>
+            <div class="ibc">National Level Mobile App Developing Contest (2020). I secured first place at the national
+              level.</div>
+          </div>
+          <div class="ib rev d4">
+            <div class="ibl">Contact</div>
+            <div class="ibc"><span
+                style="color:var(--teal);font-family:'IBM Plex Mono',monospace;font-size:.82rem">vikneswari4527773 [at]
+                gmail.com</span><br><span style="color:var(--mid);font-size:.82rem">+6017-4805317 &middot; Penang,
+                Malaysia</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="w">
+      <div class="sh rev">
+        <div class="stag"><span class="snum">02</span>&nbsp;Skills</div>
+        <h2 class="sh2">TECHNOLOGY<br>STACK</h2>
+      </div>
+      <div class="sklayout">
+        <div class="sknav rev">
+          <button class="sktab on" data-tab="auto"><span class="sktn">01</span>&nbsp;AI &amp; Automation</button>
+          <button class="sktab" data-tab="bot"><span class="sktn">02</span>&nbsp;Chatbot Dev</button>
+          <button class="sktab" data-tab="fe"><span class="sktn">03</span>&nbsp;Frontend</button>
+          <button class="sktab" data-tab="be"><span class="sktn">04</span>&nbsp;Backend</button>
+          <button class="sktab" data-tab="tools"><span class="sktn">05</span>&nbsp;Tools &amp; Platforms</button>
+        </div>
+        <div class="rev d2">
+          <div class="skpan on" id="p-auto">
+            <div class="skptit">AI &amp; AUTOMATION</div>
+            <div class="skpdesc">Building enterprise RPA workflows and AI-powered automation pipelines that run in
+              production. 10+ live bots shipped at Teleperformance.</div>
+            <div class="chips"><span class="chip k">Power Automate</span><span class="chip k">UiPath</span><span class="chip k">Yellow.ai</span><span
+                class="chip k">N8N</span><span class="chip">Power Apps</span><span class="chip">AI Builder</span><span
+                class="chip">Machine Learning</span><span class="chip">SharePoint Integration</span><span class="chip">RPA Design</span><span class="chip">SQL
+                Automation</span><span class="chip">Outlook API</span><span class="chip">Regex Parsing</span><span
+                class="chip">HTML Report Generation</span><span class="chip">Python Scripting</span></div>
+          </div>
+          <div class="skpan" id="p-bot">
+            <div class="skptit">CHATBOT DEV</div>
+            <div class="skpdesc">Designing and deploying conversational AI from intent mapping to multilingual NLP with
+              live backend integrations &mdash; including a production recruitment voice bot.</div>
+            <div class="chips"><span class="chip k">Yellow.ai Platform</span><span class="chip k">Multilingual
+                NLP</span><span class="chip">Conversational Flow Design</span><span class="chip">Intent &amp; Entity
+                Mapping</span><span class="chip">Voice Bot Architecture</span><span class="chip">Webhook
+                Integration</span><span class="chip">JavaScript in Yellow.ai</span><span class="chip">DB
+                Connectors</span><span class="chip">Language Prioritisation</span><span class="chip">Fallback
+                Handling</span></div>
+          </div>
+          <div class="skpan" id="p-fe">
+            <div class="skptit">FRONTEND</div>
+            <div class="skpdesc">Building clean, performant interfaces with modern frameworks &mdash; from Power Apps
+              dashboards to production React applications with TypeScript.</div>
+            <div class="chips"><span class="chip k">React.js</span><span class="chip k">TypeScript</span><span
+                class="chip">Next.js</span><span class="chip">Tailwind CSS</span><span class="chip">JavaScript
+                (ES6+)</span><span class="chip">HTML5 / CSS3</span><span class="chip">Power Apps UI</span><span
+                class="chip">Responsive Design</span><span class="chip">Firebase Auth</span></div>
+          </div>
+          <div class="skpan" id="p-be">
+            <div class="skptit">BACKEND</div>
+            <div class="skpdesc">Architecting server-side systems, databases, and APIs &mdash; from Laravel monoliths to
+              Node.js services and SQL-driven automation logic.</div>
+            <div class="chips"><span class="chip k">Node.js</span><span class="chip k">PHP / Laravel</span><span
+                class="chip k">MySQL / SQL</span><span class="chip">Python</span><span class="chip">Java</span><span
+                class="chip">Firebase Realtime DB</span><span class="chip">REST API Design</span><span
+                class="chip">VB.NET</span></div>
+          </div>
+          <div class="skpan" id="p-tools">
+            <div class="skptit">TOOLS &amp; PLATFORMS</div>
+            <div class="skpdesc">The enterprise toolchain from requirement to deployment &mdash; Microsoft 365 ecosystem
+              and modern dev tools.</div>
+            <div class="chips"><span class="chip k">SharePoint</span><span class="chip k">Power BI</span><span
+                class="chip">Microsoft 365 / MS Office</span><span class="chip">Git / GitHub</span><span
+                class="chip">Postman</span><span class="chip">Figma</span><span class="chip">VS Code</span><span
+                class="chip">Jira</span><span class="chip">Azure AI Fundamentals</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="w">
+      <div class="sh rev">
+        <div class="stag"><span class="snum">03</span>&nbsp;Experience</div>
+        <h2 class="sh2">BUILT IN<br>PRODUCTION</h2>
+      </div>
+      <div class="expgrid">
+        <div class="expcard rev">
+          <div class="eperiod2">March 2025 &ndash; October 2025</div>
+          <div class="erole">ROBOTIC PROCESS AUTOMATION INTERN</div>
+          <div class="eco">TP Malaysia (Teleperformance) &middot; Penang</div>
+          <ul class="epoints">
+            <li>Developed and optimized automation workflows using Microsoft Power Platform, SharePoint, and
+              conversational AI tools to enhance efficiency and minimize manual processes.</li>
+            <li>Collaborated with the Chief of Staff, automation developers, and cross-functional teams across HR,
+              Finance, and Operations to identify automation opportunities and ensure solutions aligned with
+              organizational objectives.</li>
+            <li>Supported the full automation lifecycle, from requirement gathering and solution design to testing,
+              deployment, and documentation, ensuring smooth delivery and adoption by stakeholders.</li>
+            <li>Strengthened expertise in system integration, APIs, troubleshooting, and compliance, delivering scalable
+              and reliable automation solutions.</li>
+            <li>Delivered measurable benefits to stakeholders, including faster turnaround times, improved accuracy,
+              enhanced transparency, and reduced workloads.</li>
+            <li>Contributed to a culture of knowledge-sharing and continuous improvement, gaining valuable insights into
+              collaboration, adaptability, and digital transformation.</li>
+          </ul>
+        </div>
+        <div class="expcard rev d2">
+          <div class="eperiod2">June 2023 &ndash; July 2023</div>
+          <div class="erole">RPA INTERN</div>
+          <div class="eco">KG Information Systems Sdn Bhd (KGiSL) &middot; Kuala Lumpur</div>
+          <ul class="epoints">
+            <li>Gained hands-on experience in Robotic Process Automation (RPA) using UiPath, focusing on solving
+              real-world business challenges through automation.</li>
+            <li>Collaborated closely with team members and mentors to troubleshoot technical issues and enhance the
+              performance and reliability of automation solutions.</li>
+            <li>Designed and developed RPA solutions, including the “Verify Account Positions Bot” and “Student Data
+              Management Bot,” demonstrating strong capabilities in data extraction and workflow automation.</li>
+            <li>Built automated workflows to streamline repetitive processes, significantly improving operational
+              efficiency while reducing manual errors and processing time.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="w">
+      <div class="sh rev">
+        <div class="stag"><span class="snum">04</span>&nbsp;Projects</div>
+        <h2 class="sh2">PROJECTS</h2>
+      </div>
+      <div class="pfilt rev">
+        <button class="fb on" data-f="all">All</button>
+        <button class="fb" data-f="rpa">Power Automate</button>
+        <button class="fb" data-f="bot">Yellow.ai / Chatbot</button>
+        <button class="fb" data-f="fs">Full Stack</button>
+      </div>
+      <div class="pgrid">
+        <div class="pc ft rev" data-c="fs"><span class="pnum">P-01 &middot; Full Stack &middot; React + Zustand +
+            JioSaavn API</span>
+          <div class="pico">&#x1F3A7;</div>
+          <div class="pname">AURABEAT &mdash; PERSONALIZED MUSIC</div>
+          <div class="pdesc">Personalized music streaming web application with glassmorphism-inspired UI. Integrated
+            <strong style="color:var(--ice)">JioSaavn API</strong> for real-time data, implemented global state
+            management with <strong style="color:var(--ice)">Zustand</strong>, and built client-side playlist
+            management. Features real-time multi-language search and filtering.</div>
+          <div class="pstack"><span class="stk">React</span><span class="stk">Zustand</span><span class="stk">Tailwind
+              CSS</span><span class="stk">JioSaavn API</span><span class="stk">React Router</span></div>
+          <div class="parr">&#x2197;</div>
+        </div>
+
+        <div class="pc ft rev" data-c="fs"><span class="pnum">P-02 &middot; Full Stack &middot; AI Driven &middot;
+            Firebase</span>
+          <div class="pico">&#x1F6E1;</div>
+          <div class="pname">STOPBULLY360</div>
+          <div class="pdesc">AI-driven educational platform with 5 interconnected portals and <strong
+              style="color:var(--ice)">Role-Based Access Control (RBAC)</strong>. Integrated <strong
+              style="color:var(--ice)">Google Gemini AI</strong> for automated incident classification and severity
+            prediction, reducing manual triage by 60%. Real-time cloud backend with automated case escalations.</div>
+          <div class="pstack"><span class="stk">React</span><span class="stk">TypeScript</span><span
+              class="stk">Firebase</span><span class="stk">Google Gemini AI</span><span class="stk">Node.js</span><span
+              class="stk">Recharts</span><span class="stk">jsPDF</span></div>
+          <div class="parr">&#x2197;</div>
+        </div>
+
+        <div class="pc rev d1" data-c="fs bot"><span class="pnum">P-03 &middot; AI Agent &middot; Hackathon
+            Project</span>
+          <div class="pico">&#x1F6E1;</div>
+          <div class="pname">AI CUSTOMER SUCCESS GUARDIAN</div>
+          <div class="pdesc">Enterprise-grade AI agent for automated customer support. Integrated with backend
+            microservices using OpenAPI, automated warranty checks, and technician dispatch workflows. Ensures
+            deterministic, safe, and governance-compliant AI responses.</div>
+          <div class="pstack"><span class="stk">Azure Cosmos DB</span><span class="stk">Microsoft AI Foundry</span><span
+              class="stk">Node.js</span><span class="stk">Express</span><span class="stk">OpenAPI</span></div>
+          <div class="parr">&#x2197;</div>
+        </div>
+
+        <div class="pc rev d2" data-c="fs bot"><span class="pnum">P-04 &middot; AI Assistant &middot; Hackathon
+            Project</span>
+          <div class="pico">&#x1F9E0;</div>
+          <div class="pname">INTELLIGENT EMPLOYEE ASSISTANT</div>
+          <div class="pdesc">AI-powered assistant to automate internal operations like leave requests and meeting room
+            bookings. Applied enterprise architecture pattern (AI &rarr; API &rarr; Database separation) using Azure AI
+            Foundry and Cosmos DB.</div>
+          <div class="pstack"><span class="stk">Azure OpenAI</span><span class="stk">Azure Cosmos DB</span><span
+              class="stk">Node.js</span><span class="stk">Express</span><span class="stk">Azure AI Foundry</span></div>
+          <div class="parr">&#x2197;</div>
+        </div>
+
+        <div class="pc rev" data-c="fs"><span class="pnum">P-05 &middot; Full Stack &middot; Academic Monitoring</span>
+          <div class="pico">&#x1F393;</div>
+          <div class="pname">MYASSIST &mdash; STUDENT MONITORING</div>
+          <div class="pdesc">Real-time student performance monitoring and advisory platform. Features early identification of at-risk students and automated meeting modules, <strong style="color:var(--ice)">achieving 93% user satisfaction</strong> in production usability testing.</div>
+          <div class="pstack"><span class="stk">Laravel</span><span class="stk">MySQL</span><span
+              class="stk">JavaScript</span><span class="stk">HTML/CSS</span><span class="stk">PHP</span><span class="stk">Data Visualization</span></div>
+          <div class="parr">&#x2197;</div>
+        </div>
+
+        <div class="pc rev d1" data-c="rpa bot"><span class="pnum">P-06 &middot; Yellow.ai + Power Automate + SQL</span>
+          <div class="pico">&#x1F4AA;</div>
+          <div class="pname">GYM CLAIM BOT</div>
+          <div class="pdesc">Modular end-to-end claims automation. Yellow.ai conversational layer + Power Automate
+            backend + AI Builder processing + SQL data access + SharePoint storage.</div>
+          <div class="pstack"><span class="stk">Yellow.ai</span><span class="stk">Power Automate</span><span
+              class="stk">SQL</span><span class="stk">AI Builder</span><span class="stk">SharePoint</span></div>
+          <div class="parr">&#x2197;</div>
+        </div>
+
+        <div class="pc rev d2" data-c="bot"><span class="pnum">P-07 &middot; Yellow.ai + JS + DB</span>
+          <div class="pico">&#x1F3A4;</div>
+          <div class="pname">RECRUITMENT VOICE BOT</div>
+          <div class="pdesc">Multilingual conversational voice bot for recruitment. Language prioritisation logic,
+            structured flow handling, and live database integration.</div>
+          <div class="pstack"><span class="stk">Yellow.ai</span><span class="stk">JavaScript</span><span
+              class="stk">Database</span><span class="stk">Multilingual NLP</span><span class="stk">Voice Flow</span>
+          </div>
+          <div class="parr">&#x2197;</div>
+        </div>
+
+        <div class="pc rev" data-c="rpa"><span class="pnum">P-08 &middot; Power Automate + SQL + Outlook</span>
+          <div class="pico">&#x1F4CA;</div>
+          <div class="pname">PAYROLL ALERT BOT</div>
+          <div class="pdesc">Generates dynamic HTML email reports with SQL-filtered payroll data. Automated readiness
+            alerts via Outlook so no manual report generation is needed.</div>
+          <div class="pstack"><span class="stk">Power Automate</span><span class="stk">SQL</span><span
+              class="stk">Outlook API</span><span class="stk">Dynamic HTML</span></div>
+          <div class="parr">&#x2197;</div>
+        </div>
+
+        <div class="pc rev d1" data-c="rpa"><span class="pnum">P-09 &middot; Power Automate + Regex</span>
+          <div class="pico">&#x1F4F0;</div>
+          <div class="pname">ARTICLE SCRAPING BOT</div>
+          <div class="pdesc">Automated article extraction using regex pattern matching with robust error handling.
+            Structured storage and retrieval via SharePoint.</div>
+          <div class="pstack"><span class="stk">Power Automate</span><span class="stk">Regex</span><span
+              class="stk">SharePoint</span><span class="stk">Error Handling</span></div>
+          <div class="parr">&#x2197;</div>
+        </div>
+
+        <div class="pc rev d2" data-c="rpa"><span class="pnum">P-10 &middot; Python + Power Automate</span>
+          <div class="pico">&#x1F5A8;</div>
+          <div class="pname">BADGE PRINTING BOT</div>
+          <div class="pdesc">Background removal automation for employee badges using Python image processing integrated
+            into a Power Automate pipeline.</div>
+          <div class="pstack"><span class="stk">Python</span><span class="stk">Power Automate</span><span
+              class="stk">Image Processing</span></div>
+          <div class="parr">&#x2197;</div>
+        </div>
+
+        <div class="pc rev" data-c="rpa"><span class="pnum">P-11 &middot; Power Automate + SharePoint</span>
+          <div class="pico">&#x1F30D;</div>
+          <div class="pname">COUNTRY CODE BOT</div>
+          <div class="pdesc">End-to-end prefix-to-country mapping bot. Automatically maps client phone prefixes to
+            correct countries &mdash; eliminating manual data enrichment.</div>
+          <div class="pstack"><span class="stk">Power Automate</span><span class="stk">SharePoint</span><span
+              class="stk">Data Mapping</span></div>
+          <div class="parr">&#x2197;</div>
+        </div>
+
+        <div class="pc rev d1" data-c="rpa"><span class="pnum">P-12 &middot; Power Automate &middot; Modular
+            Suite</span>
+          <div class="pico">&#x2699;</div>
+          <div class="pname">CSV AUTOMATION SUITE</div>
+          <div class="pdesc">A suite of modular bots (Sanity Check, Hallo AI, Health Declaration) that handle CSV
+            download, validation, processing, and SharePoint upload.</div>
+          <div class="pstack"><span class="stk">Power Automate</span><span class="stk">SharePoint</span><span
+              class="stk">CSV Processing</span><span class="stk">Modular Design</span></div>
+          <div class="parr">&#x2197;</div>
+        </div>
+
+        <div class="pc rev d2" data-c="fs"><span class="pnum">P-13 &middot; Full Stack &middot; Digital Transformation</span>
+          <div class="pico">&#x1F393;</div>
+          <div class="pname">EDUCARE PORTAL</div>
+          <div class="pdesc">Digital coordination platform for parent-teacher engagement. Replaced manual school administration with an eco-friendly digital solution, <strong style="color:var(--ice)">improving communication efficiency by 45%</strong> and supporting the Malaysia Education Blueprint 2013-2025.</div>
+          <div class="pstack"><span class="stk">PHP</span><span class="stk">JavaScript</span><span
+              class="stk">HTML/CSS</span><span class="stk">MySQL</span></div>
+          <div class="parr">&#x2197;</div>
+        </div>
+
+        <div class="pc rev" data-c="fs"><span class="pnum">P-14 &middot; Full Stack &middot; Clinic Operations</span>
+          <div class="pico">&#x2695;</div>
+          <div class="pname">HEALTHCARE MANAGEMENT SYSTEM</div>
+          <div class="pdesc">Comprehensive platform for clinic operations managing patient appointments, medical records, and admin monitoring. <strong style="color:var(--ice)">Increased management efficiency by 40%</strong> and streamlined operational workflows.</div>
+          <div class="pstack"><span class="stk">PHP</span><span class="stk">MySQL</span><span class="stk">JavaScript</span><span class="stk">HTML/CSS</span></div>
+          <div class="parr">&#x2197;</div>
+        </div>
+
+        <div class="pc rev d1" data-c="rpa"><span class="pnum">P-15 &middot; RPA &middot; UiPath &middot; Finance</span>
+          <div class="pico">&#x1F4B0;</div>
+          <div class="pname">VERIFY ACCOUNT POSITIONS BOT</div>
+          <div class="pdesc">Automated financial reconciliation solution for Accounts Payable. Reconciles transaction records between ACME systems, flagging discrepancies and suggesting resolutions. <strong style="color:var(--ice)">Reduced manual workload by 60%</strong>.</div>
+          <div class="pstack"><span class="stk">UiPath</span><span class="stk">Financial Reconciliation</span><span class="stk">Data Scraping</span></div>
+          <div class="parr">&#x2197;</div>
+        </div>
+
+        <div class="pc rev d2" data-c="rpa"><span class="pnum">P-16 &middot; RPA &middot; UiPath &middot; Admin</span>
+          <div class="pico">&#x1F4CB;</div>
+          <div class="pname">STUDENT DATA MANAGEMENT BOT</div>
+          <div class="pdesc">Optimizes administrative processes by automating student report generation and stakeholder email distribution. <strong style="color:var(--ice)">Reduced processing time by 50%</strong> and improved data accessibility.</div>
+          <div class="pstack"><span class="stk">UiPath</span><span class="stk">Excel Automation</span><span class="stk">Report Generation</span></div>
+          <div class="parr">&#x2197;</div>
+        </div>
+
+        <div class="pc rev" data-c="rpa"><span class="pnum">P-17 &middot; RPA &middot; UiPath &middot; Finance</span>
+          <div class="pico">&#x1F4B8;</div>
+          <div class="pname">EXPENSE APPROVAL BOT</div>
+          <div class="pdesc">Streamlines reimbursement processes by automating request validation against predefined criteria. Features automated approval workflows and status tracking to expedite financial operations.</div>
+          <div class="pstack"><span class="stk">UiPath</span><span class="stk">Workflow Automation</span><span class="stk">Compliance</span></div>
+          <div class="parr">&#x2197;</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements">
+    <div class="w">
+      <div class="sh rev">
+        <div class="stag"><span class="snum">05</span>&nbsp;Awards &amp; Certs</div>
+        <h2 class="sh2">RECOGNISED<br>EXPERTISE</h2>
+      </div>
+      <div class="achgrid">
+        <div class="achc rev"><span class="achi">&#x1F947;</span>
+          <div class="achn">Gold Award &mdash; National Mobile App Development</div>
+          <div class="achis">National Level &middot; 2020</div>
+        </div>
+        <div class="achc rev d1"><span class="achi">&#x1F3AF;</span>
+          <div class="achn">Chin Hin Ai Hackathon Top 7 Finalist</div>
+          <div class="achis">March 2026</div>
+        </div>
+        <div class="achc rev d2"><span class="achi">&#x1F947;</span>
+          <div class="achn">Gold Award &mdash; Singapore &amp; Asian Schools Math Olympiad</div>
+          <div class="achis">SASMO &middot; 2019</div>
+        </div>
+        <div class="achc rev"><span class="achi">&#x1F949;</span>
+          <div class="achn">Bronze Award &mdash; Singapore &amp; Asian Schools Math Olympiad</div>
+          <div class="achis">SASMO &middot; 2018</div>
+        </div>
+        <div class="achc rev d1"><span class="achi">&#x2601;</span>
+          <div class="achn">Azure AI Fundamentals</div>
+          <div class="achis">Microsoft Certified &middot; 2024</div>
+        </div>
+        <div class="achc rev d2"><span class="achi">&#x1F4CA;</span>
+          <div class="achn">Power BI Data Analyst Associate</div>
+          <div class="achis">Microsoft Certified &middot; 2023</div>
+        </div>
+        <div class="achc rev"><span class="achi">&#x1F916;</span>
+          <div class="achn">Machine Learning with Python</div>
+          <div class="achis">Manufacturing &amp; Supply Chain &middot; 2025</div>
+        </div>
+        <div class="achc rev d1"><span class="achi">&#x269B;</span>
+          <div class="achn">React JS Bootcamp Certification</div>
+          <div class="achis">Novitech R&amp;D Limited &middot; 2024</div>
+        </div>
+        <div class="achc rev d2"><span class="achi">&#x1F9E0;</span>
+          <div class="achn">AI Internship Certificate</div>
+          <div class="achis">Novitech R&amp;D Limited &middot; 2024</div>
+        </div>
+        <div class="achc rev"><span class="achi">&#x1F4BB;</span>
+          <div class="achn">JavaScript (Basic &amp; Advanced) &middot; SQL &middot; C &middot; Java</div>
+          <div class="achis">Programming Hub &middot; 2022&ndash;2023</div>
+        </div>
+        <div class="achc rev d1"><span class="achi">&#x2615;</span>
+          <div class="achn">HTML (Basic &amp; Advanced) &middot; CSS</div>
+          <div class="achis">Programming Hub &middot; 2022&ndash;2023</div>
+        </div>
+        <div class="achc rev d2"><span class="achi">&#x1F393;</span>
+          <div class="achn">Dean's List &mdash; All Semesters (UPSI)</div>
+          <div class="achis">Sultan Idris Education University &middot; 2021&ndash;2023</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="leadership">
+    <div class="w">
+      <div class="sh rev">
+        <div class="stag"><span class="snum">06</span>&nbsp;Leadership</div>
+        <h2 class="sh2">BEYOND THE<br>KEYBOARD</h2>
+      </div>
+      <div class="llist">
+        <div class="litem rev">
+          <div class="lic">&#x1F3AF;</div>
+          <div>
+            <div class="lti">Program Director</div>
+            <div class="lor">Use Twice Save Globe &mdash; National Programme &middot; UPSI 2022</div>
+          </div>
+        </div>
+        <div class="litem rev d1">
+          <div class="lic">&#x1F4B0;</div>
+          <div>
+            <div class="lti">Vice Treasurer</div>
+            <div class="lor">First Foot Forward International Programme &middot; UPSI 2022</div>
+          </div>
+        </div>
+        <div class="litem rev d2">
+          <div class="lic">&#x1F3E2;</div>
+          <div>
+            <div class="lti">Bureau &mdash; Entrepreneurship &amp; Sponsorship</div>
+            <div class="lor">REXCO &middot; Bharatanatyam Cultural Club</div>
+          </div>
+        </div>
+        <div class="litem rev d3">
+          <div class="lic">&#x1F4CB;</div>
+          <div>
+            <div class="lti">Secretariat</div>
+            <div class="lor">CONVEX 2023 &mdash; Universiti Sains Malaysia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="w">
+      <div class="clayout">
+        <div class="rev">
+          <div class="avbadge"><span class="avdot"></span>Available for Full-Time &middot; August 2026</div>
+          <div class="bigt">LET'S<br>BUILD<br><span>TOGETHER</span></div>
+          <p class="cleftp">Graduating in 2026 and seeking AI automation, software engineering, or RPA roles
+            internationally. I am open to full-time and remote opportunities worldwide.</p>
+          <div class="cemail"><span class="eaddr" id="emailDisplay">vikneswari4527773@gmail.com</span><button
+              class="cpbtn" id="cpbtn">Copy</button></div>
+          <div class="clinks">
+            <a href="https://www.linkedin.com/in/vikneswari176/" target="_blank" class="clink">LinkedIn</a>
+            <a href="resume.pdf" class="clink" download>Resume (PDF)</a>
+            <a href="https://vikneswari.weebly.com/" target="_blank" class="clink">Portfolio</a>
+            <a href="mailto:vikneswari4527773@gmail.com" class="clink">Email</a>
+          </div>
+        </div>
+        <div class="cright rev d2">
+          <div class="ccard">
+            <div style="font-size:1.3rem">&#x1F4CD;</div>
+            <div>
+              <div class="ccl">Location</div>
+              <div class="ccv">Penang, Malaysia</div>
+            </div>
+          </div>
+          <div class="ccard">
+            <div style="font-size:1.3rem">&#x1F4F1;</div>
+            <div>
+              <div class="ccl">Phone</div>
+              <div class="ccv">+6017-4805317</div>
+            </div>
+          </div>
+          <div class="ccard">
+            <div style="font-size:1.3rem">&#x1F393;</div>
+            <div>
+              <div class="ccl">University</div>
+              <div class="ccv">Universiti Sains Malaysia (USM)</div>
+            </div>
+          </div>
+          <div class="ccard">
+            <div style="font-size:1.3rem">&#x1F30F;</div>
+            <div>
+              <div class="ccl">Open To</div>
+              <div class="ccv">International &middot; Remote &middot; Relocation</div>
+            </div>
+          </div>
+          <div class="ccard">
+            <div style="font-size:1.3rem">&#x1F517;</div>
+            <div>
+              <div class="ccl">FYP Supervisor</div>
+              <div class="ccv">Dr Nor Athiyah Binti Abdullah &middot; USM<br><a href="mailto:athiyah@usm.my" style="font-size:.75rem;opacity:.8;font-family:'IBM Plex Mono',monospace;color:inherit;text-decoration:none">athiyah@usm.my</a></div>
+            </div>
+          </div>
+          <div class="ccard">
+            <div style="font-size:1.3rem">&#x1F3E2;</div>
+            <div>
+              <div class="ccl">Industry Reference</div>
+              <div class="ccv">Mr Loai Al-Sabahi &middot; TP Malaysia<br><a href="mailto:Loai.alsabahi@teleperformance.com" style="font-size:.75rem;opacity:.8;font-family:'IBM Plex Mono',monospace;color:inherit;text-decoration:none">Loai.alsabahi@teleperformance.com</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="fl">&#169; 2026 Vikneswari Nandakumar</div>
+    <div class="fr">Built with <span>precision</span> &middot; Automation Engineer</div>
+  </footer>
+
+  <script>
+    // ── CURSOR ──────────────────────────────────
+    var cd = document.getElementById('cd');
+    var cr = document.getElementById('cr');
+    var mx = -200, my = -200, rx = -200, ry = -200, shown = false;
+
+    document.addEventListener('mousemove', function (e) {
+      mx = e.clientX; my = e.clientY;
+      cd.style.left = mx + 'px';
+      cd.style.top = my + 'px';
+      if (!shown) {
+        shown = true;
+        cd.style.opacity = '1';
+        cr.style.opacity = '1';
+      }
+    });
+
+    (function ringLoop() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      cr.style.left = rx + 'px';
+      cr.style.top = ry + 'px';
+      requestAnimationFrame(ringLoop);
+    })();
+
+    document.querySelectorAll('a, button, .pc, .ib, .expcard, .achc, .litem, .ccard, .sktab, .fb').forEach(function (el) {
+      el.addEventListener('mouseenter', function () { document.body.classList.add('hov'); });
+      el.addEventListener('mouseleave', function () { document.body.classList.remove('hov'); });
+    });
+
+    // ── STARFIELD ───────────────────────────────
+    (function () {
+      var c = document.getElementById('sf');
+      var ctx = c.getContext('2d');
+      var W, H, stars = [];
+      function resize() { W = c.width = window.innerWidth; H = c.height = window.innerHeight; }
+      window.addEventListener('resize', resize); resize();
+      for (var i = 0; i < 120; i++) {
+        stars.push({ x: Math.random() * W, y: Math.random() * H, r: Math.random() * .8 + .2, vx: (Math.random() - .5) * .1, vy: (Math.random() - .5) * .1, a: Math.random() * .4 + .1, h: Math.random() > .7 ? 170 : 220 });
+      }
+      (function frame() {
+        ctx.clearRect(0, 0, W, H);
+        stars.forEach(function (s) {
+          s.x += s.vx; s.y += s.vy;
+          if (s.x < 0) s.x = W; if (s.x > W) s.x = 0;
+          if (s.y < 0) s.y = H; if (s.y > H) s.y = 0;
+          ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+          ctx.fillStyle = 'hsla(' + s.h + ',80%,70%,' + s.a + ')'; ctx.fill();
+        });
+        requestAnimationFrame(frame);
+      })();
+    })();
+
+    // ── SCROLL REVEAL ───────────────────────────
+    (function () {
+      var els = document.querySelectorAll('.rev');
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('vis'); });
+      }, { threshold: 0.1 });
+      els.forEach(function (el) { obs.observe(el); });
+    })();
+
+    // ── SKILLS TABS ─────────────────────────────
+    document.querySelectorAll('.sktab').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.sktab').forEach(function (b) { b.classList.remove('on'); });
+        document.querySelectorAll('.skpan').forEach(function (p) { p.classList.remove('on'); });
+        btn.classList.add('on');
+        var p = document.getElementById('p-' + btn.dataset.tab);
+        if (p) p.classList.add('on');
+      });
+    });
+
+    // ── PROJECT FILTER ──────────────────────────
+    document.querySelectorAll('.fb').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        document.querySelectorAll('.fb').forEach(function (b) { b.classList.remove('on'); });
+        btn.classList.add('on');
+        var f = btn.dataset.f;
+        document.querySelectorAll('.pc').forEach(function (card) {
+          card.style.display = (f === 'all' || card.dataset.c.includes(f)) ? 'flex' : 'none';
+        });
+      });
+    });
+
+    // ── COPY EMAIL ──────────────────────────────
+    document.getElementById('cpbtn').addEventListener('click', function () {
+      var self = this;
+      navigator.clipboard.writeText('vikneswari4527773@gmail.com').then(function () {
+        self.textContent = 'Copied!';
+        self.style.color = 'var(--teal)';
+        self.style.borderColor = 'var(--teal)';
+        setTimeout(function () { self.textContent = 'Copy'; self.style.color = ''; self.style.borderColor = ''; }, 2000);
+      }).catch(function () {
+        self.textContent = 'Done';
+        setTimeout(function () { self.textContent = 'Copy'; }, 2000);
+      });
+    });
+
+    // ── 3D TILT ─────────────────────────────────
+    document.querySelectorAll('.pc, .expcard').forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var r = card.getBoundingClientRect();
+        var rx2 = ((e.clientY - r.top - r.height / 2) / r.height) * 8;
+        var ry2 = -((e.clientX - r.left - r.width / 2) / r.width) * 8;
+        card.style.transform = 'translateY(-4px) rotateX(' + rx2 + 'deg) rotateY(' + ry2 + 'deg)';
+        card.style.transformStyle = 'preserve-3d';
+      });
+      card.addEventListener('mouseleave', function () { card.style.transform = ''; });
+    });
+
+    // ── ACTIVE NAV ──────────────────────────────
+    (function () {
+      var secs = document.querySelectorAll('section[id]');
+      var links = document.querySelectorAll('.nlinks a');
+      window.addEventListener('scroll', function () {
+        var cur = '';
+        secs.forEach(function (s) { if (window.scrollY >= s.offsetTop - 200) cur = s.id; });
+        links.forEach(function (a) {
+          a.getAttribute('href') === '#' + cur ? a.classList.add('active') : a.classList.remove('active');
+        });
+      });
+    })();
+  </script>
+</body>
+
+</html>
